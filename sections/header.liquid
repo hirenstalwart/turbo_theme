@@ -58,6 +58,7 @@
 {% comment %}Mobile navigation{% endcomment %}
 
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
+  
   {% if section.settings.promo_text != blank %}
     <div class="promo-banner">
       <div class="promo-banner__content">
@@ -435,7 +436,7 @@
               {% if section.settings.logo != blank %}
                 <img src="{{ section.settings.logo | img_url: '410x' }}" class="primary_logo lazyload" alt="{{ shop.name | escape }}" />
               {% else %}
-                <span class="header__logo-text">{{ shop.name }}</span>
+                <span class="header__logo-text"> hello{{ shop.name }}</span>
               {% endif %}
             </a>
           </div>
