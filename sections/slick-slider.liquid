@@ -1,0 +1,257 @@
+{%- assign id = section.id -%}
+
+{% comment %} Content settings {% endcomment %}
+{%- assign blocks = section.blocks -%}
+{% comment %} End content settings {% endcomment %}
+{%- assign css_class = section.settings.css_class -%}
+<style>
+  body {
+    background-color: #fff;
+  }
+
+  /* added the following to give the background color of the arrows as red for visibility, the default which can be found in the slick-theme.css was white */
+  .slick-prev:before,
+  .slick-next:before {
+    color: red;
+  }
+
+
+</style>
+{% if blocks.size > 0 %}
+<section class="section {{ css_class }} {% if section.settings.wide_display == true %}is-width-wide has-no-side-gutter{% endif %}">
+  <div class="your-class js-slick-slider" data-slide-to-show="{{section.settings.slidetoshow}}" data-adaptive-height="{{ section.settings.activate_adaptiveHeight }}" data-slide-to-scroll="{{ section.settings.slideToScroll }}" data-slide-speed="{{ section.settings.slideSpeed }}" data-auto-play="{{ section.settings.autoPlay }}">
+    {% for block in blocks %}
+    {% comment %} Content settings {% endcomment %}
+    {%- assign image = block.settings.image -%}
+    {% comment %} End content settings {% endcomment %}
+
+    {% comment %}        {%- assign mobile_crop = 'mobile-banner--crop-' | append: block.settings.mobile_image_crop -%} {% endcomment %}
+
+    <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{ block.id }}">
+      {% if image != blank %}
+      {% render 'image-element',
+                        image: image,
+      alt: image.alt,
+      stretch_width: true,
+      additional_classes: mobile_crop
+      %}
+      {% else %}
+      {% capture i %}{% cycle "1", "2" %}{% endcapture %}
+      {{ 'lifestyle-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--slideshow' }}
+      {% endif %}
+
+
+      {% unless block.settings.button1_link != blank and block.settings.button2_link != blank %}
+      {% if block.settings.button1_link != blank and block.settings.button1 == blank %}
+      <a href="{{ block.settings.button1_link }}" class="banner-full-link">
+        {{ block.settings.title }}
+      </a>
+      {% elsif block.settings.button2_link != blank and block.settings.button2 == blank %}
+      <a href="{{ block.settings.button2_link }}" class="banner-full-link">
+        {{ block.settings.title }}
+      </a>
+      {% endif %}
+      {% endunless %}
+
+      {% unless block.settings.pretext == blank and block.settings.title == blank and block.settings.subtitle == blank  %}
+      <div class="caption position-{{ block.settings.text_position }} js-caption caption--below-{{ section.settings.mobile_text_below_image }}" >
+        <div class="caption-content caption-background-{{ block.settings.caption_background }} caption-transparency-{{ block.settings.caption_background_transparency }}  align-{{ block.settings.text_align }}">
+          {% if block.settings.pretext != blank %}
+          <div class="pretext">
+            
+                                    {{ block.settings.pretext }}
+          </div>
+          {% endif %}
+
+          {% if forloop.first == true and block.settings.title != blank %}
+          <h1 class="headline">
+            
+                                    {{ block.settings.title }}
+          </h1>
+          {% elsif block.settings.title != blank %}
+          <p class="headline">
+            
+                                    {{ block.settings.title }}
+          </p>
+          {% endif %}
+
+          {% if block.settings.subtitle != blank %}
+          <div class="subtitle">
+            
+                                    {{ block.settings.subtitle }}
+          </div>
+          {% endif %}
+
+          {% if block.settings.button1 != blank %}
+          <a {% if block.settings.button1_link != blank %}href="{{ block.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ block.settings.button1_highlight }}">{{ block.settings.button1 }}</a>
+          {% endif %}
+
+          {% if block.settings.button2 != blank %}
+          <a {% if block.settings.button2_link != blank %}href="{{ block.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ block.settings.button2_highlight }}">{{ block.settings.button2 }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endunless %} 
+    </div>
+    {% endfor %}
+  </div>
+</section> 
+{% endif %}
+
+{% schema %}
+{
+   "name":"slick slider",
+   "class":"shopify-section--slickslider",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"wide_display",
+         "label":"Wide display",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"css_class",
+         "label":"CSS Class"
+      },
+      {
+         "type":"checkbox",
+         "id":"activate_adaptiveHeight",
+         "label":"Enable adaptive height",
+         "info":"Slideshow will adjust based on height of individual slides",
+         "default":false
+      },
+      {
+         "type":"range",
+         "id":"slidetoshow",
+         "label":"Slide to Show",
+         "min":1,
+         "max":3,
+         "step":1,
+         "default":1
+      },
+      {
+         "type":"range",
+         "id":"slideToScroll",
+         "label":"Slide to Scroll",
+         "min":1,
+         "max":3,
+         "step":1,
+         "default":1
+      },
+      {
+         "type":"checkbox",
+         "id":"autoPlay",
+         "label":"Auto play slide",
+         "default":false
+      },
+      {
+         "type":"range",
+         "id":"slideSpeed",
+         "label":"Change auto play slides every",
+         "min":1,
+         "max":12,
+         "step":1,
+         "default":6,
+         "unit":"sec"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"image",
+         "name":"Slide",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":"Image",
+               "info":"1600 x 1000px recommended"
+            },
+            {
+               "type":"richtext",
+               "id":"pretext",
+               "label":"Preheading"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Heading",
+               "default":"Your headline"
+            },
+            {
+               "type":"richtext",
+               "id":"subtitle",
+               "label":"Subheading"
+            },
+            {
+               "type":"checkbox",
+               "id":"caption_background",
+               "label":"Display text background",
+               "default":false
+            },
+            {
+               "type":"checkbox",
+               "id":"caption_background_transparency",
+               "label":"Enable text background transparency",
+               "default":false
+            },
+            {
+               "type":"select",
+               "id":"text_position",
+               "label":"Text position",
+               "default":"center",
+               "options":[
+                  {
+                     "value":"left",
+                     "label":"Left"
+                  },
+                  {
+                     "value":"center",
+                     "label":"Center"
+                  },
+                  {
+                     "value":"right",
+                     "label":"Right"
+                  }
+               ]
+            },
+            {
+               "type":"select",
+               "id":"text_align",
+               "label":"Text alignment",
+               "default":"center",
+               "options":[
+                  {
+                     "value":"left",
+                     "label":"Left"
+                  },
+                  {
+                     "value":"center",
+                     "label":"Center"
+                  },
+                  {
+                     "value":"right",
+                     "label":"Right"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"slick slider",
+         "category":"Image",
+         "settings":{
+            
+         }
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

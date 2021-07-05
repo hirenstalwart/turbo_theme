@@ -1,0 +1,108 @@
+<section class="section">
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container content page">
+    <div class="one-whole column">
+      <h1>{{ page.title }}</h1>
+      <div class="feature_divider"></div>
+    </div>
+    {% render 'page-multi-column', content: page.content %}
+  </div>
+  Cycle <br>
+  {% for i in (0..5) %}
+  {% if i == 4 %}
+   {% break %}  
+    {% endif %}
+  {% cycle 'group1': '1', '-','3' %}  
+{% endfor %}
+
+ <br> Concate
+  {% assign fruits = "apples, oranges" | split: ", " %}
+ 
+{% assign vegetables = "broccoli, carrots" | split: ", " %}
+{% assign plants = fruits | concat: vegetables %}
+
+{{ plants | join: ", " }}
+  
+  <br>
+
+  {{ 'rgba(122, 181, 92, 0.5)' | color_to_hsl }} <br>
+  {{ 'hsla(100, 38%, 54%, 0.5)' | color_to_rgb }}  <br>
+  {{ 'hsla(100, 38%, 54%, 0.5)' | color_to_hex }}<br>
+  {{  'hsla(100, 38%, 54%, 0.5)' | color_to_hex  |color_brightness }}<br>
+
+{{ 145 | money }}<br>
+  {{ 1450 | money_without_currency   }} <br>
+  {{ 10 | pluralize: 'item', 'items' }} <br>
+  {{ "hellosd" | slice: -5, 4  }}<br>
+{{ "Hiren Rathod" | truncate: 4 }} <br>
+  {{ "Hiren Rathod" | truncate: 4,'.' }} <br>  
+  {{ "Hiren Rathod" | truncate: 4,'' }} <br>  
+  {{ "The cat came back the very next day" | truncatewords: 4 }} <br>
+    {{ "The cat came back the very next day" | truncatewords: 4, "--" }} <br>
+  {{ "The cat came back the very next day" | truncatewords: 4, "" }} <br>
+{{ "Hiren" | split: "" | reverse | join: "" }} <br>
+
+    
+{{ all_products['blue-silk-tuxedo'].price }} <br>
+
+<h1>{{ pages.about-us.title }}</h1><br>
+  
+  {{ page.id }}<br> 
+  {{ page.handle }}<br>  
+  {{ page.content }}<br>
+
+
+
+  Collection Name <br>
+{% for collection in collections %}
+    
+{{'Id:'| append:  collection.id  }} - {{'URL:'| append:  collection.url    }}- {{'products_count:'| append:  collection.products_count    }}- {{'tags:' | append: collection.tags| append:', ' }} - {{'Vendors:'| append:  collection.all_vendors | append:', '   }} - {{'title:' | append: collection.title| append:', '  }}
+ 
+  <ul>
+{% for product_type in collection.all_types %}
+<li class="{{ product_type | handleize }}">
+{{ product_type | link_to_type }}
+</li>
+{% endfor %}
+</ul>
+
+{% endfor %}
+
+ <br> linklists <br>
+  {% for linklist in linklists %}
+<div>
+  <h2>{{ linklist.title }} 0<h2>
+  <ul>
+    {% for link in linklist.links %}
+    <li>
+        <a href="{{ link.url }}">{{ link.title }} 1</a>
+<!--         <ul>
+          {% for childlink in link.links %}
+            <li><a href="{{ childlink.url }}">{{ childlink.title }} 2</a>
+             <ul>
+               {% for grandchildlink in childlink.links %}
+                 <li><a href="{{ grandchildlink.url }}">{{ grandchildlink.title }} 3</a></li>
+               {% endfor %}
+             </ul>
+            </li>
+          {% endfor %}
+        </ul> -->
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
+    
+    Feactured Products<br>
+    <br>
+    {% for product in collections.featured.products %}
+  {{ product.title }}
+{% endfor %}
+    
+    <br>
+    Blogs <br>
+   {% for article in blog.articles %}
+    <h2>{{ article.title }}</h2>
+{% endfor %}
+    
+</section>

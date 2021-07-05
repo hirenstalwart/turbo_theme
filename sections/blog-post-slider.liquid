@@ -1,0 +1,254 @@
+
+{% comment %} Assign object as block or section {% endcomment %}
+{% if type == 'block' %}
+  {%- assign object = block -%}
+{% else %}
+  {%- assign object = section -%}
+{% endif %}
+
+{%- assign id = object.id -%}
+{%- assign blocks = section.blocks -%}
+
+{% comment %} Content settings {% endcomment %}
+{%- assign blog = blogs[object.settings.blog_widget_select] -%}
+{%- assign title = object.settings.title | escape -%}
+{% comment %} End content settings {% endcomment %}
+<style>
+  body {
+    background-color: #fff;
+  }
+
+  /* added the following to give the background color of the arrows as red for visibility, the default which can be found in the slick-theme.css was white */
+  .slick-prev:before,
+  .slick-next:before {
+    color: red;
+  }
+
+
+</style>
+<!--  -->
+
+<!--  -->
+<section class="section {{ css_class }} {% if section.settings.wide_display == true %}is-width-wide has-no-side-gutter{% endif %}">
+  <div class="">
+   {% if title != blank %}
+      <div class="one-whole column">
+        <h2 class="title center blog">{{ title }}</h2>
+        <div class="feature_divider"></div>
+      </div>
+    {% endif %}
+  <div class="blog-post-slider js-blog-slider" data-slide-to-show="{{section.settings.slidetoshow}}" data-adaptive-height="{{ section.settings.activate_adaptiveHeight }}" data-slide-to-scroll="{{ section.settings.slideToScroll }}" data-slide-speed="{{ section.settings.slideSpeed }}" data-auto-play="{{ section.settings.autoPlay }}">
+    {% for article in blog.articles limit: object.settings.home_page_articles %}
+    <div class="gallery-cell slide-{{ forloop.index }}" {{ block.shopify_attributes }} data-block-id="{{ block.id }}">   
+
+          {% if article.image != blank %}
+       {% render 'image-element',
+                      image: article.image,
+                      alt: article.image.alt
+              %}
+          {% endif %}
+      
+          <h3 class="sub_title">
+            <a href="{{ article.url }}">{{ article.title }}</a>
+          </h3>
+          <p class="blog_meta">
+            {% if object.settings.blog_author %}
+              <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+            {% endif %}
+
+            {% if object.settings.blog_date %}
+              <span>{{ article.published_at | date: format: "month_day_year" }}</span>
+            {% endif %}
+
+            {% if object.settings.read_time %}
+              {% render 'include-read-time', article: article %}
+            {% endif %}
+
+            {% if object.settings.blog_comment_count %}
+              {% if settings.disqus_enabled %}
+                <span>
+                  <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.id }}" class="disqus-comment-count">{{ 'blogs.counts.comments_with_count' | t: count: 0 }}</a>
+                </span>
+              {% elsif article.comments_enabled? and article.comments_count > 0 %}
+                <span>
+                  <a href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
+                </span>
+              {% endif %}
+            {% endif %}
+          </p>
+
+          {% if object.settings.blog_tags %}
+            <div class="blog_meta tags">
+              {% for tag in article.tags %}
+                <span>
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}" title="{{ blog.title | escape }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">
+                    {{ tag }}
+                  </a>
+                </span>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if object.settings.excerpt_display == 'full_excerpt' %}
+            {%- assign excerpt = article.excerpt -%}
+          {% elsif object.settings.excerpt_display == 'truncated_excerpt' %}
+            {%- assign excerpt = article.excerpt | truncate: 100 -%}
+          {% endif %}
+
+          {% if article.excerpt != blank %}
+            <div class="excerpt">
+              {{ excerpt }}
+            </div>
+          {% endif %}
+
+          {% if object.settings.read_more_link %}
+            <a href="{{ article.url }}" {% if settings.read_more_style == 'button' %}class="action_button continue-button"{% endif %}>{{ 'blogs.general.continue_reading_html' | t }}</a>
+          {% endif %}
+        </div>
+     
+      {% endfor %}
+  </div>
+</div>
+</section> 
+
+
+
+
+{% schema %}
+  {
+    "name": "Blog post slider",
+    "class":"shopify-section--blog-slider",
+     "settings":[
+
+      {
+         "type":"checkbox",
+         "id":"wide_display",
+         "label":"Wide display",
+         "default":true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "type": "blog",
+        "id": "blog_widget_select",
+        "label": "Blog"
+      },
+      {
+         "type":"checkbox",
+         "id":"activate_adaptiveHeight",
+         "label":"Enable adaptive height",
+         "info":"Slideshow will adjust based on height of individual slides",
+         "default":false
+      },
+      {
+         "type":"range",
+         "id":"slidetoshow",
+         "label":"Slide to Show",
+         "min":1,
+         "max":3,
+         "step":1,
+         "default":1
+      },
+      {
+         "type":"range",
+         "id":"slideToScroll",
+         "label":"Slide to Scroll",
+         "min":1,
+         "max":3,
+         "step":1,
+         "default":1
+      },
+      {
+         "type":"checkbox",
+         "id":"autoPlay",
+         "label":"Auto play slide",
+         "default":false
+      },
+      {
+         "type":"range",
+         "id":"slideSpeed",
+         "label":"Change auto play slides every",
+         "min":1,
+         "max":12,
+         "step":1,
+         "default":6,
+         "unit":"sec"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_tags",
+        "label": "Show tags",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_author",
+        "label": "Show author",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "read_time",
+        "label": "Show estimated read time",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_comment_count",
+        "label": "Show comment count",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "read_more_link",
+        "label": "Show continue reading link",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "excerpt_display",
+        "label": "Excerpt display",
+        "default": "full_excerpt",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "full_excerpt",
+            "label": "Full excerpt"
+          },
+          {
+            "value": "truncated_excerpt",
+            "label": "Truncated excerpt"
+          }
+        ]
+      }
+    ],
+   "presets":[
+      {
+         "name":"Blog post slider",
+         "category":"Blog slider",
+         "settings":{
+            
+         }
+      }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
