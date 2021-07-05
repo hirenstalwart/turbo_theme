@@ -436,7 +436,7 @@
               {% if section.settings.logo != blank %}
                 <img src="{{ section.settings.logo | img_url: '410x' }}" class="primary_logo lazyload" alt="{{ shop.name | escape }}" />
               {% else %}
-                <span class="header__logo-text"> hello{{ shop.name }}</span>
+                <span class="header__logo-text"> {{ shop.name }}</span>
               {% endif %}
             </a>
           </div>
