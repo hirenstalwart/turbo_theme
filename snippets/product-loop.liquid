@@ -52,7 +52,12 @@
    {% endcapture %}
 
      {% unless colorlist contains color %}
-        <-- INSERT VARIANT LOOP -->
+<!--         <-- INSERT VARIANT LOOP --> -->
+  {% render 'product-thumbnail',
+                product: product,
+                products_per_row: products_per_row,
+                sidebar: sidebar
+        %}
         {% capture tempList %}
       {{colorlist | append: color | append: " " }}
       {% endcapture %}
@@ -62,9 +67,10 @@
     {% endif %}
   {% endfor %}
   {% else %}
-  <-- INSERT PRODUCT LOOP -->
+<!--   <-- INSERT PRODUCT LOOP --> -->
   {% endif %}
 {% endfor %}
+    
   <!--   {% for product in products limit: limit %}
   
 
