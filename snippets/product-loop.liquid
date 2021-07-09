@@ -33,7 +33,7 @@
 {% endif %}
 
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} is-flex is-flex-wrap equal-columns--outside-trim" {{ paginationType }}>
-  {% for product in products limit: limit %}
+<!--   {% for product in products limit: limit %}
   
 
 
@@ -52,7 +52,7 @@
         %}
       {% endif %}
     {% endif %}
-  {% endfor %}
+  {% endfor %} -->
 
   {% if template contains 'collection' %}
     {% if settings.pagination_type != 'basic_pagination' %}
