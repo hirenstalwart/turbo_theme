@@ -54,7 +54,7 @@
              {{ variant.options[index] }}
              {% endcapture %}
              {% unless colorlist contains color %}
-              <!--          INSERT VARIANT LOOP  -->
+              
                {% render 'product-thumbnail',
                             product: product,
                             products_per_row: products_per_row,
@@ -69,7 +69,7 @@
        {% endif %}
      {% endfor %}
   {% else %}  
-  <!--    INSERT PRODUCT LOOP --> 
+  
      {% render 'product-thumbnail',
                               product: product,
                               products_per_row: products_per_row,
