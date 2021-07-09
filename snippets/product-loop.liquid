@@ -35,15 +35,15 @@
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} is-flex is-flex-wrap equal-columns--outside-trim" {{ paginationType }}>
   {% for product in products limit: limit %}
   
-  {% assign color_active = false %}
+<!--   {% assign color_active = false %}
     {% for option in product.options %}
       {% if option == 'Color' %}
          {% assign color_active = true %}
       {% endif %}
     {% endfor %}
     {% if product.variants.size > 1 and color_active == true %}
-    <p id="vibhuti"> vibhuti</p>
-    {% endif %}
+    
+    {% endif %} -->
 
   
   
