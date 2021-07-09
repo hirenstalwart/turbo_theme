@@ -68,6 +68,11 @@
      {% endfor %}
   {% else %}  
   <!--    INSERT PRODUCT LOOP --> 
+     {% render 'product-thumbnail',
+                              product: product,
+                              products_per_row: products_per_row,
+                              sidebar: sidebar
+      %}
 
   {% endif %}
 {% endfor %}
