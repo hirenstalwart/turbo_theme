@@ -33,10 +33,7 @@
 {% endif %}
 
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} is-flex is-flex-wrap equal-columns--outside-trim" {{ paginationType }}>
-{% for product in collection.products %}
-    <!--show product details here -->
-  {{product.title}}
-  {% endfor %}
+
   
 {% for product in collection.products %}
   
