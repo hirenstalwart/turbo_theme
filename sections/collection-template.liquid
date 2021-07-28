@@ -5,7 +5,6 @@
 {% endcomment %}
 
 {% if section.settings.featured_collection_image %}
-
   <section class="section {% if section.settings.wide_display == true %}is-width-wide has-no-side-gutter{% endif %}">
     <a name="pagecontent" id="pagecontent"></a>
     <div class="container">
@@ -45,7 +44,6 @@
     {% paginate collection.products by section.settings.pagination_limit %}
 
     <div class="one-whole column">
-Vibhuti
       <div class="breadcrumb-collection">
         {% if section.settings.collection_breadcrumb %}
           <script type="application/ld+json">
