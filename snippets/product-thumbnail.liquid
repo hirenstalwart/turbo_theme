@@ -56,9 +56,8 @@
           <script>
              console.log("1.2");            
           </script>
-
-             {% render 'image-element',
-                       image: variant.featured_media,
+              {% render 'image-element',
+                       image: product.featured_media.preview_image,
                       alt: alt_text,
                       object_fit: align_height,
                       max_height: collection_height
