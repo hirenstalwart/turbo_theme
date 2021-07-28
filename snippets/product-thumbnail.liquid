@@ -36,10 +36,15 @@
             <script>
                console.log("0");
             </script>
-          {% render 'quick-shop-gallery', product: variant %}
-          {%comment%}
-            {% render 'quick-shop-gallery', product: product %}
-          {%endcomment%}
+               {%if product.variants.size > 1%}
+                    {% render 'quick-shop-gallery', product: variant %}
+               {%else%}
+                    {% render 'quick-shop-gallery', product: product %}
+                {%endif%}
+          
+              {%comment%}
+                {% render 'quick-shop-gallery', product: product %}
+              {%endcomment%}
           {% else %}
             <script>
                console.log("1");
