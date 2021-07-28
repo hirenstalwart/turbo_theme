@@ -36,14 +36,14 @@
 
 <!-- start custome code for disply all varints as product   -->
 {% for product in collection.products %}  
-  {% if product.variants.size > 1 and color_active == true %}
+  
   {% assign color_active = false %}
   {% for option in product.options %}
     {% if option == 'Color' %}
        {% assign color_active = true %}
     {% endif %}
   {% endfor %}
-  
+  {% if product.variants.size > 1 and color_active == true %}
     {% for option in product.options %}
        {% if option == 'Color' %}
          {% assign index = forloop.index0 %}
