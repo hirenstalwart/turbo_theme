@@ -11,13 +11,12 @@
                   </script>
         {% render 'product-info',
                 product: product,
-                collection_handles: collection_handles,
-      			variant:variant
+                collection_handles: collection_handles
         %}
       {% endif %}
 
       {% if settings.quick_shop_enabled and settings.quick_shop_style == 'popup' %}
-        {% render 'quick-shop-button', product: product %}
+        {% render 'quick-shop-button', product: variant %}
       {% endif %}
     </div>
   </div>
