@@ -36,12 +36,8 @@
             <script>
                console.log("0");
             </script>
-                  {%if product.variants.size > 1%}
-                 		{% render 'quick-shop-gallery', product: variant %} 
-                  {%else%}
-                  		{% render 'quick-shop-gallery', product: product %}
-                  {%endif%}
-<!--             {% render 'quick-shop-gallery', product: product %} -->
+                 
+            {% render 'quick-shop-gallery', product: product %}
           {% else %}
             <script>
                console.log("1");
