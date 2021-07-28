@@ -57,12 +57,12 @@
              console.log("1.2");            
           </script>
           {% if product.variants.size > 1 %}
-          {%- assign product_image= "variant.featured_media" -%}
+          {%- assign product_image= variant.featured_media -%}
           {%else%}
-          {%- assign product_image= "product.selected_or_first_available_variant.image" -%}
+          {%- assign product_image= product.selected_or_first_available_variant.image -%}
           {%endif%}
               {% render 'image-element',
-                       image: product.featured_media.preview_image,
+                       image: product_image,
                       alt: alt_text,
                       object_fit: align_height,
                       max_height: collection_height
