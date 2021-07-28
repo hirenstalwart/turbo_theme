@@ -50,16 +50,15 @@
                console.log("1");
             </script>
             {% if settings.quick_shop_enabled and settings.quick_shop_style == 'inline' and product.selected_or_first_available_variant.image %}
-              <script>
-             console.log("1.1");
-                
-          </script>
-              {% render 'image-element',
-                      image: product.selected_or_first_available_variant.image,
-                      alt: alt_text,
-                      object_fit: align_height,
-                      max_height: collection_height
-              %}
+                  <script>
+                 console.log("1.1");                
+                  </script>
+                {% render 'image-element',
+                        image: product.selected_or_first_available_variant.image,
+                        alt: alt_text,
+                        object_fit: align_height,
+                        max_height: collection_height
+                %}
             {% else %}
                   <!--     display variant and original prodt images       -->
                   <script>
