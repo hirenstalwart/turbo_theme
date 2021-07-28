@@ -2,7 +2,7 @@
 {%- assign collection_handles = product.collections | map: 'handle' -%}
 
 {% if product.featured_media.preview_image.alt contains 'youtube' or image.alt contains 'vimeo' %}
-  {%- assign alt_text = product.title -%}
+  {%- assign alt_text = product.title | append: variant.title  -%}
 {% else %}
   {%- assign alt_text = product.featured_image.alt -%}
 {% endif %}
