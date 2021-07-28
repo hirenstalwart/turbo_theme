@@ -103,7 +103,7 @@
     "collection_height": 200,
     "thumbnail_hover_enabled": false,
     "display_vendor": false,
-    "collection_secondary_image": true,
+    "collection_secondary_image": false,
     "sale_banner_enabled": false,
     "collection_swatches": true,
     "mobile_products_per_row": "2",

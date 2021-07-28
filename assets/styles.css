@@ -9035,19 +9035,7 @@ a.tag {
   text-align: center;
 }
 
-/* Swap to second image on hover */.has-secondary-media-swap img {
-    visibility: visible;
-    height: auto;
-  }
-.has-secondary-media-swap .product_gallery {
-    margin-bottom: 0;
-  }
-.has-secondary-media-swap .secondary-media-hidden {
-    opacity: 0;
-    visibility: hidden;
-    height: 0 !important;
-    /* Override inline height on image-element snippet */
-  }/* Thumbnail overlay */
+/* Swap to second image on hover *//* Thumbnail overlay */
 
 .quick_shop,
 .view_all {
