@@ -115,9 +115,14 @@
           {% endif %}
         {% endif %}
         </a>
+                 <script>
+                     console.log("if details");            
+                  </script>
       {% render 'product-details', product: product %}
     </div>
-
+                <script>
+                     console.log("out details");            
+                  </script>
     {% render 'product-details',
             product: product,
             collection_handles: collection_handles
@@ -126,6 +131,9 @@
   </div>
 
   <a class="product-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ product.url | within: collection }}">
+                 <script>
+                     console.log("thumbnail info");            
+                  </script>
     {% render 'product-info',
             product: product
             collection_handles: collection_handles
