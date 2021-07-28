@@ -33,11 +33,14 @@
     {% if settings.pagination_type == 'load_more_button' %}data-load-more--grid-item{% endif %}>
   <div class="product-wrap {% if settings.collection_secondary_image != blank and secondaryImage != blank %}has-secondary-media-swap{% endif %}">
     <div class="relative product_image">
-       {%if product.variants.size > 1%}
-      <a href="{{ variant.url | within: collection }}">
-      {%else%}  
-        <a href="{{ product.url | within: collection }}">
-      {%endif%}
+          {%if product.variants.size > 1%}
+          <a href="{{ variant.url | within: collection }}">
+          {%else%}  
+            <a href="{{ product.url | within: collection }}">
+          {%endif%}
+          {%comment%}
+          <a href="{{ product.url | within: collection }}">
+          {%endcomment%}
       
         <div class="image__container">
           {% if settings.product_form_style == 'dropdown' %}
