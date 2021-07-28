@@ -62,7 +62,7 @@
           {%- assign product_image= product.selected_or_first_available_variant.image -%}
           {%endif%}
               {% render 'image-element',
-                       image: product_image,
+                       image: {{product_image}},
                       alt: alt_text,
                       object_fit: align_height,
                       max_height: collection_height
