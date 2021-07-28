@@ -37,7 +37,7 @@
         <div class="image__container">
           {% if settings.product_form_style == 'dropdown' %}
             <script>
-               console.log("0");
+             //  console.log("0");
             </script>
                {%if product.variants.size > 1%}
                     {% render 'quick-shop-gallery', product: variant %}
@@ -50,11 +50,11 @@
               {%endcomment%}
           {% else %}
             <script>
-               console.log("1");
+             //  console.log("1");
             </script>
             {% if settings.quick_shop_enabled and settings.quick_shop_style == 'inline' and product.selected_or_first_available_variant.image %}
                   <script>
-                 console.log("1.1");                
+               //  console.log("1.1");                
                   </script>
                 {% render 'image-element',
                         image: product.selected_or_first_available_variant.image,
@@ -65,11 +65,11 @@
             {% else %}
                   <!--     display variant and original prodt images       -->
                   <script>
-                     console.log("1.2");            
+                  //   console.log("1.2");            
                   </script>
                   {%if product.variants.size > 1%}
                   <script>
-                     console.log("variant");            
+                   //  console.log("variant");            
                   </script>
                     {% render 'image-element',
                                  image: variant.featured_media,
@@ -79,7 +79,7 @@
                         %}
                   {%else%}
                   <script>
-                     console.log(" non variant");            
+                   //  console.log(" non variant");            
                   </script>
                   {% render 'image-element',
                                image: product.featured_image ,
