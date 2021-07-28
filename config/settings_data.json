@@ -104,7 +104,7 @@
     "thumbnail_hover_enabled": false,
     "display_vendor": false,
     "collection_secondary_image": true,
-    "sale_banner_enabled": true,
+    "sale_banner_enabled": false,
     "collection_swatches": false,
     "mobile_products_per_row": "2",
     "pagination_type": "load_more_button",
