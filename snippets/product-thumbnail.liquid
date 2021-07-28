@@ -56,7 +56,8 @@
           <script>
              console.log("1.2");            
           </script>
-          {% if product.variants.size > 1 %}          
+          
+<!--           {% if product.variants.size > 1 %}          
           <script>
              console.log("variant.featured_media");            
           </script>
@@ -66,7 +67,7 @@
              console.log("product.selected_or_first_available_variant.image");            
           </script>
             {%- assign product_image = product.selected_or_first_available_variant.image -%}
-          {% endif %}
+          {% endif %} -->
           
               {% render 'image-element',          
           image: product.selected_or_first_available_variant.image,
