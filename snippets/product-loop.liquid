@@ -58,7 +58,8 @@
                             product: product,
                             products_per_row: products_per_row,
                             sidebar: sidebar,
-  							variant:variant
+  							variant:variant,
+                            alt_text_image:product.title | concat: variant.title 
                %}
                {% capture tempList %}
                  {{colorlist | append: color | append: " " }}
@@ -73,7 +74,8 @@
      {% render 'product-thumbnail',
                               product: product,
                               products_per_row: products_per_row,
-                              sidebar: sidebar
+                              sidebar: sidebar,
+                              alt_text_image:product.title
       %}
 
   {% endif %}
