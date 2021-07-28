@@ -57,6 +57,9 @@
              console.log("1.2");            
           </script>
           {%if product.variants.size > 1%}
+          <script>
+             console.log("variant");            
+          </script>
             {% render 'image-element',
                          image: variant.featured_media,
                         alt: alt_text,
@@ -64,6 +67,9 @@
                         max_height: collection_height
                 %}
           {%else%}
+          <script>
+             console.log(" not variant");            
+          </script>
           {% render 'image-element',
                        image: product.selected_or_first_available_variant.image,
                       alt: alt_text,
