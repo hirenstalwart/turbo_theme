@@ -81,7 +81,23 @@
 <!-- end custome code for disply all varints as product   -->
   
 <!-- shopify code   -->
-<!--      -->
+{%comment%}
+  {% for product in products limit: limit %}
+          {% if product.id == skip_product.id or skip == true %}
+            {%- assign product_found = true -%}
+          {% else %}
+            {% if forloop.rindex0 == 0 and product_found == false and forloop.length != products.size and template != 'search' and template != 'index' and template != 'page.details' %}
+              {%- assign skip = true -%}
+            {% else %}
+              {% render 'product-thumbnail',
+                      product: product,
+                      products_per_row: products_per_row,
+                      sidebar: sidebar
+              %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}  
+{%endcomment%}
 
   {% if template contains 'collection' %}
     {% if settings.pagination_type != 'basic_pagination' %}
