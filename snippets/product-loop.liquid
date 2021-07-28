@@ -53,7 +53,7 @@
              {{ variant.options[index] }}
              {% endcapture %}
              {% unless colorlist contains color %}
-              {% assign image_text = product.title | concat: variant.title  %}
+              {% assign image_text = product.title | append: variant.title  %}
                {% render 'product-thumbnail',
                             product: product,
                             products_per_row: products_per_row,
