@@ -5326,48 +5326,14 @@ ul.toggle_list li ul.active {
 }
 .list-collections-wrapper .collection-info__caption {
   margin-top: 20px;
-}@media only screen and (max-width: 798px) {
+}.list-collections-wrapper .collection-info__caption {
+    display: block;
+  }@media only screen and (max-width: 798px) {
   .list-collections-wrapper .collection-info__caption {
     display: block;
     position: static;
   }
-}.list-collections-wrapper .product-wrap {
-    text-align: center;
-    position: relative;
-  }
-.list-collections-wrapper .product-wrap:hover .collection-details {
-    opacity: 1;
-    transform: none;
-  }
-.list-collections-wrapper .product-wrap:hover .view_all {
-    opacity: 1;
-    transform: none;
-  }
-.list-collections-wrapper .product-wrap:hover .thumbnail-overlay {
-    opacity: 0.7;
-  }
-.list-collections-wrapper .thumbnail-overlay .info {
-    top: 50%;
-    transform: translateY(-50.1%);
-    padding: 10px 0;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-  }
-.list-collections-wrapper .thumbnail-overlay .collection-details {
-    position: relative;
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    display: block;
-  }
-.list-collections-wrapper .thumbnail-overlay .title {
-    display: block;
-    padding: 0 2em;
-    position: relative;
-    color: #ffffff;
-  }.blog-header {
+}.blog-header {
   margin-bottom: 5px;
 }
 @media only screen and (max-width: 798px) {
@@ -9033,7 +8999,11 @@ a.tag {
 .slider-gallery .thumbnail .product-info__caption,
 .list-collections .thumbnail .product-info__caption {
   margin-top: 20px;
-}@media only screen and (max-width: 798px) {
+}.product-list .thumbnail .product-info__caption,
+.slider-gallery .thumbnail .product-info__caption,
+.list-collections .thumbnail .product-info__caption {
+    display: block;
+  }@media only screen and (max-width: 798px) {
   .product-list .thumbnail .product-info__caption,
 .slider-gallery .thumbnail .product-info__caption,
 .list-collections .thumbnail .product-info__caption {
@@ -9104,13 +9074,19 @@ a.tag {
 .view_all:hover {
     color: #000000;
     background-color: #ffffff;
-  }.product-wrap {
+  }.thumbnail .price span.money {
+  color: #03a196;
+}
+.thumbnail .price span.money:hover {
+  color: #03857c;
+}
+.thumbnail .sale span.money {
+  color: #d54d4d;
+}
+.thumbnail .was_price span.money {
+  color: #8c8b8b;
+}.product-wrap {
     position: relative;
-  }
-
-.product-wrap:hover .product-details {
-    opacity: 1;
-    transform: none;
   }
 
 .product-wrap:hover .quick_shop {
@@ -9123,69 +9099,20 @@ a.tag {
   }
 
 .thumbnail-overlay .info {
+    top: 50%;
+    transform: translateY(-50.1%);
+    padding: 10px 0;
+    position: absolute;
     text-align: center;
     width: 100%;
     margin: 0 auto;
     pointer-events: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 15px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
-.thumbnail-overlay .product-details {
-    position: relative;
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    display: block;
-  }
-
-.thumbnail-overlay .title {
-    display: block;
-    padding: 0 2em;
-    position: relative;
-    color: #ffffff;
-  }
-
-.thumbnail-overlay .brand {
-    color: #ffffff;
-  }
-
-.thumbnail-overlay .price {
-    display: block;
-    color: #03a196;
-  }
-
-.thumbnail-overlay .price:hover {
-    color: #03857c;
-  }
-
-.thumbnail-overlay .was_price,
-.thumbnail-overlay .was_price span.money {
-    color: #8c8b8b;
-  }.thumbnail .price span.money {
-  color: #03a196;
-}
-.thumbnail .price span.money:hover {
-  color: #03857c;
-}
-.thumbnail .sale span.money {
-  color: #d54d4d;
-}
-.thumbnail .was_price span.money {
-  color: #8c8b8b;
-}/* Product banners */
+.thumbnail-overlay .quick_shop {
+    pointer-events: all;
+    margin-top: 0;
+  }/* Product banners */
 .new {
   position: relative;
   display: inline;
