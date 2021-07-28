@@ -36,7 +36,10 @@
             <script>
                console.log("0");
             </script>
+          {% render 'quick-shop-gallery', product: variant %}
+          {%comment%}
             {% render 'quick-shop-gallery', product: product %}
+          {%endcomment%}
           {% else %}
             <script>
                console.log("1");
