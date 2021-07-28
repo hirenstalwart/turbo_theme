@@ -116,7 +116,7 @@
     "free_price_text": "Free",
     "enable_shopify_review_comments": false,
     "enable_shopify_collection_badges": false,
-    "quick_shop_enabled": true,
+    "quick_shop_enabled": false,
     "quick_shop_style": "popup",
     "quick_shop_full_description": false,
     "description_words": 25,
