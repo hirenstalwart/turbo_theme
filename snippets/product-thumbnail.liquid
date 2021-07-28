@@ -55,7 +55,7 @@
             {% else %}
           <script>
              console.log("1.2");
-            console.log({{product.selected_or_first_available_variant.image}});
+            console.log({{product}});
           </script>
               {% render 'image-element',
                       image: product.featured_media.preview_image,
