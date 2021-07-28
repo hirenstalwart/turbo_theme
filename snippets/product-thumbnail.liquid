@@ -56,21 +56,7 @@
           <script>
              console.log("1.2");            
           </script>
-<!--           {% if product.variants.size > 1 %}
-          		 {% render 'image-element',
-                       image: variant.featured_media,
-                      alt: alt_text,
-                      object_fit: align_height,
-                      max_height: collection_height
-              %}
-          {% else %}
-           {% render 'image-element',
-                       image: product.selected_or_first_available_variant.image,
-                      alt: alt_text,
-                      object_fit: align_height,
-                      max_height: collection_height
-              %}
-          {% endif %} -->
+
              {% render 'image-element',
                        image: variant.featured_media,
                       alt: alt_text,
