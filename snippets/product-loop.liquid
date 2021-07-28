@@ -35,8 +35,7 @@
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} is-flex is-flex-wrap equal-columns--outside-trim" {{ paginationType }}>
 
 <!-- start custome code for disply all varints as product   -->
-{% for product in collection.products %}
-  
+{% for product in collection.products %}  
   {% assign color_active = false %}
   {% for option in product.options %}
     {% if option == 'Color' %}
@@ -69,13 +68,11 @@
        {% endif %}
      {% endfor %}
   {% else %}  
-  
      {% render 'product-thumbnail',
                               product: product,
                               products_per_row: products_per_row,
                               sidebar: sidebar
       %}
-
   {% endif %}
 {% endfor %}
 <!-- end custome code for disply all varints as product   -->
