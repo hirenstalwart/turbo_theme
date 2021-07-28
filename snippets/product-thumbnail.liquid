@@ -53,30 +53,30 @@
                       max_height: collection_height
               %}
             {% else %}
-          <script>
-             console.log("1.2");            
-          </script>
-          {%if product.variants.size > 1%}
-          <script>
-             console.log("variant");            
-          </script>
-            {% render 'image-element',
-                         image: variant.featured_media,
-                        alt: alt_text,
-                        object_fit: align_height,
-                        max_height: collection_height
-                %}
-          {%else%}
-          <script>
-             console.log(" non variant");            
-          </script>
-          {% render 'image-element',
-                       image: product.featured_image ,
-                      alt: alt_text,
-                      object_fit: align_height,
-                      max_height: collection_height
-              %}
-          {%endif%}
+                  <script>
+                     console.log("1.2");            
+                  </script>
+                  {%if product.variants.size > 1%}
+                  <script>
+                     console.log("variant");            
+                  </script>
+                    {% render 'image-element',
+                                 image: variant.featured_media,
+                                alt: alt_text,
+                                object_fit: align_height,
+                                max_height: collection_height
+                        %}
+                  {%else%}
+                  <script>
+                     console.log(" non variant");            
+                  </script>
+                  {% render 'image-element',
+                               image: product.featured_image ,
+                              alt: alt_text,
+                              object_fit: align_height,
+                              max_height: collection_height
+                      %}
+                  {%endif%}
               
             {% endif %}
           {% endif %}
