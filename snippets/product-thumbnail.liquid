@@ -4,7 +4,10 @@
 {% if product.featured_media.preview_image.alt contains 'youtube' or image.alt contains 'vimeo' %}
   {%- assign alt_text = product.title   -%}
 {% else %}
-  {%- assign alt_text = product.featured_image.alt  -%}
+  {%comment%}
+    {%- assign alt_text = product.featured_image.alt  -%}
+  {%endcomment%}
+  {%- assign alt_text = product.title  -%}
 {% endif %}
 
 {% style %}
