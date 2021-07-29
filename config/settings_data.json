@@ -602,23 +602,6 @@
           "custom_css": ""
         }
       },
-      "1489285418400": {
-        "type": "featured-blog",
-        "settings": {
-          "title": "Blog posts",
-          "blog_widget_select": "news",
-          "home_page_articles": 2,
-          "blog_tags": true,
-          "blog_author": true,
-          "read_time": false,
-          "blog_date": true,
-          "blog_comment_count": true,
-          "read_more_link": true,
-          "excerpt_display": "truncated_excerpt",
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
       "1489285524898": {
         "type": "testimonial",
         "disabled": true,
@@ -1050,10 +1033,9 @@
       "1489285116594",
       "1489285524898",
       "1489285174583",
-      "1489285367207",
-      "1489285418400",
       "1621848743995255e0",
-      "162192062851be597f"
+      "162192062851be597f",
+      "1489285367207"
     ]
   }
 }
