@@ -577,13 +577,13 @@
           "thumbnail_position": "bottom",
           "enable_thumbnail_slider": true,
           "display_vendor": false,
-          "frontpage_display_description": true,
+          "frontpage_display_description": false,
           "product_description_position": "bottom",
           "display_savings": true,
           "enable_shopify_product_badges": false,
-          "show_payment_button": true,
+          "show_payment_button": false,
           "set_product_height": true,
-          "product_height": 500,
+          "product_height": 320,
           "video_looping": false,
           "css_class": "",
           "custom_css": ""
@@ -621,6 +621,7 @@
       },
       "1489285524898": {
         "type": "testimonial",
+        "disabled": true,
         "blocks": {
           "1489285524898-0": {
             "type": "image",
