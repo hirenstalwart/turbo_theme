@@ -1,9 +1,9 @@
 <div class="product-details">
   <span class="title" itemprop="name">{{ product.title }}-{{ variant.title}}</span>
   {% for option in variant.options %}
-  {%capture option %}
+ 
   - {{ option }}
-  {%endcapture%}
+ 
   {% endfor %}
   {% if settings.display_vendor %}
     <span class="brand">
