@@ -1,5 +1,5 @@
 <div class="product-details">
-  <span class="title" itemprop="name">{{ product.title }}</span>
+  <span class="title" itemprop="name">{{ product.title }}-{{ variant.title}}</span>
   {% if settings.display_vendor %}
     <span class="brand">
       {{ product.vendor | link_to_vendor }}
